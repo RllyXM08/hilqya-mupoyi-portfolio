@@ -11,7 +11,15 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css" />
-  <script type="module" src="js/script.js"></script>
+  <!-- Scripts normaux avec defer : ils attendent que la page soit lue,
+       puis s'exécutent dans cet ordre.
+       langue.js d'abord (variable langue et traductions),
+       script.js en dernier (il appelle les fonctions des 3 autres fichiers). -->
+  <script src="js/langue.js" defer></script>
+  <script src="js/projets.js" defer></script>
+  <script src="js/menu.js" defer></script>
+  <script src="js/formulaire.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 <!-- id="haut" sur le body : le bouton flottant ramène tout en haut.
      (Sur le header collé, le lien ne marchait pas : il est toujours visible.) -->
@@ -21,14 +29,18 @@
   <header class="entete">
     <div class="conteneur">
       <a class="logo" href="#accueil">hilqya@portfolio:~$</a>
-      <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      <!-- Boutons de droite : langue (affiche la langue vers laquelle on bascule) et menu mobile -->
+      <div class="entete__actions">
+        <button type="button" id="btn-langue" aria-label="Switch to English">EN</button>
+        <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      </div>
       <nav aria-label="Navigation principale">
         <ul id="menu-principal" class="menu">
-          <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#a-propos">À propos</a></li>
-          <li><a href="#competences">Compétences</a></li>
-          <li><a href="#projets">Projets</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a id="nav-accueil" href="#accueil">Accueil</a></li>
+          <li><a id="nav-apropos" href="#a-propos">À propos</a></li>
+          <li><a id="nav-competences" href="#competences">Compétences</a></li>
+          <li><a id="nav-projets" href="#projets">Projets</a></li>
+          <li><a id="nav-contact" href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -39,13 +51,13 @@
       <div class="conteneur">
         <!-- Texte regroupé pour le placer à côté de la photo -->
         <div class="accueil__texte">
-          <p class="accueil__salut">&gt; bonjour, je suis</p>
+          <p id="accueil-salut" class="accueil__salut">&gt; bonjour, je suis</p>
           <h1 class="accueil__nom">Hilqya Kabemba Mupoyi</h1>
-          <p class="accueil__titre">Étudiant en programmation informatique</p>
-          <p>Bienvenue sur mon portfolio. Vous y trouverez mon parcours, mes compétences et les projets que j'ai réalisés.</p>
+          <p id="accueil-titre" class="accueil__titre">Étudiant en programmation informatique</p>
+          <p id="accueil-intro">Bienvenue sur mon portfolio. Vous y trouverez mon parcours, mes compétences et les projets que j'ai réalisés.</p>
           <p class="actions">
-            <a class="bouton bouton--plein" href="#projets">Voir mes projets</a>
-            <a class="bouton bouton--contour" href="#contact">Me contacter</a>
+            <a id="accueil-btn-projets" class="bouton bouton--plein" href="#projets">Voir mes projets</a>
+            <a id="accueil-btn-contact" class="bouton bouton--contour" href="#contact">Me contacter</a>
           </p>
           <!-- Réseaux visibles dès l'arrivée sur la page -->
           <ul class="reseaux">
@@ -60,7 +72,7 @@
 
     <section id="a-propos">
       <div class="conteneur">
-        <h2><span class="h2__prefixe" aria-hidden="true">// </span>À propos</h2>
+        <h2><span class="h2__prefixe" aria-hidden="true">// </span><span id="titre-apropos">À propos</span></h2>
         <!-- Trois paragraphes de présentation (chaque id servira à la traduction) -->
         <p id="apropos-p1">Je m'appelle Hilqya Kabemba Mupoyi et je suis étudiant en programmation informatique au Collège La Cité, à Ottawa. Avant d'arriver au Canada, j'ai obtenu un diplôme d'études secondaires en électronique en République démocratique du Congo, ce qui m'a donné le goût de comprendre comment les choses fonctionnent, du circuit jusqu'au code.</p>
         <p id="apropos-p2">Ma formation me fait toucher à plusieurs domaines : développement web (HTML, CSS, JavaScript), programmation orientée objet en C#, applications Android en Kotlin, bases de données SQL Server, réseaux et systèmes Linux.</p>
@@ -70,30 +82,30 @@
 
     <section id="competences">
       <div class="conteneur">
-        <h2><span class="h2__prefixe" aria-hidden="true">// </span>Compétences</h2>
+        <h2><span class="h2__prefixe" aria-hidden="true">// </span><span id="titre-competences">Compétences</span></h2>
         <ul class="competences__liste">
-          <li>HTML et CSS</li>
-          <li>JavaScript</li>
-          <li>Java</li>
-          <li>C# et .NET</li>
-          <li>Kotlin et Android</li>
-          <li>Modélisation de bases de données</li>
-          <li>Git et GitHub</li>
-          <li>Linux et Bash</li>
+          <li id="comp-1">HTML et CSS</li>
+          <li id="comp-2">JavaScript</li>
+          <li id="comp-3">Java</li>
+          <li id="comp-4">C# et .NET</li>
+          <li id="comp-5">Kotlin et Android</li>
+          <li id="comp-6">Modélisation de bases de données</li>
+          <li id="comp-7">Git et GitHub</li>
+          <li id="comp-8">Linux et Bash</li>
         </ul>
       </div>
     </section>
 
     <section id="projets">
       <div class="conteneur">
-        <h2><span class="h2__prefixe" aria-hidden="true">// </span>Projets</h2>
-        <p>Choisissez une catégorie pour filtrer les projets.</p>
+        <h2><span class="h2__prefixe" aria-hidden="true">// </span><span id="titre-projets">Projets</span></h2>
+        <p id="projets-intro">Choisissez une catégorie pour filtrer les projets.</p>
         <div class="filtres">
-          <button type="button" class="filtre filtre--actif" data-categorie="tous" aria-pressed="true">Tous</button>
-          <button type="button" class="filtre" data-categorie="web" aria-pressed="false">Web</button>
-          <button type="button" class="filtre" data-categorie="mobile" aria-pressed="false">Mobile</button>
-          <button type="button" class="filtre" data-categorie="logiciel" aria-pressed="false">Logiciel</button>
-          <button type="button" class="filtre" data-categorie="base-de-donnees" aria-pressed="false">Base de données</button>
+          <button type="button" class="filtre filtre--actif" id="filtre-tous" data-categorie="tous" aria-pressed="true">Tous</button>
+          <button type="button" class="filtre" id="filtre-web" data-categorie="web" aria-pressed="false">Web</button>
+          <button type="button" class="filtre" id="filtre-mobile" data-categorie="mobile" aria-pressed="false">Mobile</button>
+          <button type="button" class="filtre" id="filtre-logiciel" data-categorie="logiciel" aria-pressed="false">Logiciel</button>
+          <button type="button" class="filtre" id="filtre-base-de-donnees" data-categorie="base-de-donnees" aria-pressed="false">Base de données</button>
         </div>
         <div id="liste-projets" class="liste-projets">
           <!-- Les cartes seront créées en JavaScript (étape 3) -->
@@ -103,26 +115,26 @@
 
     <section id="contact">
       <div class="conteneur">
-        <h2><span class="h2__prefixe" aria-hidden="true">// </span>Contact</h2>
-        <p>Écrivez-moi à <a href="mailto:hilqyamupoyi08@gmail.com">hilqyamupoyi08@gmail.com</a> ou avec le formulaire ci-dessous.</p>
+        <h2><span class="h2__prefixe" aria-hidden="true">// </span><span id="titre-contact">Contact</span></h2>
+        <p><span id="contact-texte-debut">Écrivez-moi à</span> <a href="mailto:hilqyamupoyi08@gmail.com">hilqyamupoyi08@gmail.com</a> <span id="contact-texte-fin">ou avec le formulaire ci-dessous.</span></p>
         <ul class="reseaux">
           <li><a class="reseau" href="https://github.com/RllyXM08" target="_blank" rel="noopener noreferrer" aria-label="GitHub (nouvel onglet)">GitHub &#8599;</a></li>
           <li><a class="reseau" href="https://www.linkedin.com/in/hilqya-mupoyi-8a751142a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (nouvel onglet)">LinkedIn &#8599;</a></li>
         </ul>
         <form id="formulaire-contact" class="formulaire" novalidate>
           <div class="champ">
-            <label for="nom">Nom</label>
+            <label id="label-nom" for="nom">Nom</label>
             <input type="text" id="nom" name="nom" autocomplete="name" required />
           </div>
           <div class="champ">
-            <label for="courriel">Courriel</label>
+            <label id="label-courriel" for="courriel">Courriel</label>
             <input type="email" id="courriel" name="courriel" autocomplete="email" required />
           </div>
           <div class="champ">
-            <label for="message">Message</label>
+            <label id="label-message" for="message">Message</label>
             <textarea id="message" name="message" rows="5" required></textarea>
           </div>
-          <button type="submit" class="bouton bouton--plein">Envoyer</button>
+          <button type="submit" id="bouton-envoyer" class="bouton bouton--plein">Envoyer</button>
           <p id="message-formulaire" class="message-formulaire" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -131,7 +143,7 @@
 
   <footer class="pied">
     <div class="conteneur">
-      <p>&copy; 2026 Hilqya Kabemba Mupoyi · Fait avec HTML, CSS et JavaScript</p>
+      <p>&copy; 2026 Hilqya Kabemba Mupoyi · <span id="pied-texte">Fait avec HTML, CSS et JavaScript</span></p>
     </div>
   </footer>
 

@@ -1,16 +1,13 @@
 // ==========================================================
-// script.js : point d'entrée du JavaScript du portfolio
-// Chargé dans index.html avec type="module" : le script attend
-// automatiquement que la page soit lue avant de s'exécuter.
+// script.js : point de départ du JavaScript du portfolio
+// Chargé en DERNIER dans index.html (scripts normaux avec defer) :
+// les fonctions de projets.js, menu.js et formulaire.js sont déjà
+// connues, et la page est déjà lue, quand ce fichier s'exécute.
 // ==========================================================
 
-import { initialiserProjets } from "./projets.js";
-import { initialiserMenu } from "./menu.js";
-import { initialiserFormulaire } from "./formulaire.js";
-
-// Étape 3 : cartes des projets et filtre
+// Étape 3 : cartes des projets et filtre (fonction de projets.js)
 initialiserProjets();
 
-// Étape 4 : menu mobile et validation du formulaire
+// Étape 4 : menu mobile (menu.js) et validation du formulaire (formulaire.js)
 initialiserMenu();
 initialiserFormulaire();

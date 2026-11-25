@@ -9,27 +9,31 @@
 const formatCourriel = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Une règle par champ : l'id du champ, la vérification et le message d'erreur
+// en français (message) et en anglais (messageEn)
 const regles = [
   {
     id: "nom",
     estValide: function (valeur) {
       return valeur.length >= 2;
     },
-    message: "Entrez votre nom (au moins 2 caractères)."
+    message: "Entrez votre nom (au moins 2 caractères).",
+    messageEn: "Enter your name (at least 2 characters)."
   },
   {
     id: "courriel",
     estValide: function (valeur) {
       return formatCourriel.test(valeur);
     },
-    message: "Entrez un courriel valide, par exemple nom@exemple.com."
+    message: "Entrez un courriel valide, par exemple nom@exemple.com.",
+    messageEn: "Enter a valid email, for example name@example.com."
   },
   {
     id: "message",
     estValide: function (valeur) {
       return valeur.length >= 10;
     },
-    message: "Écrivez un message d'au moins 10 caractères."
+    message: "Écrivez un message d'au moins 10 caractères.",
+    messageEn: "Write a message of at least 10 characters."
   }
 ];
 
@@ -72,7 +76,8 @@ function verifierChamp(regle) {
   if (valide) {
     effacerErreur(champ);
   } else {
-    afficherErreur(champ, regle.message);
+    // Ternaire : message dans la langue actuelle (variable langue de langue.js)
+    afficherErreur(champ, (langue === "fr") ? regle.message : regle.messageEn);
   }
   return valide;
 }
@@ -85,7 +90,7 @@ function afficherMessage(texte, estSucces) {
   boite.textContent = texte;
 }
 
-export function initialiserFormulaire() {
+function initialiserFormulaire() {
   const formulaire = document.getElementById("formulaire-contact");
 
   formulaire.addEventListener("submit", function (evenement) {
@@ -102,14 +107,17 @@ export function initialiserFormulaire() {
     }
 
     if (premierChampEnErreur !== null) {
-      afficherMessage("Veuillez corriger les champs en rouge.", false);
+      afficherMessage((langue === "fr") ? "Veuillez corriger les champs en rouge." : "Please correct the fields in red.", false);
       premierChampEnErreur.focus();
       return;
     }
 
     // Tout est valide : on remercie avec le prénom (le premier mot du nom)
     const prenom = document.getElementById("nom").value.trim().split(" ")[0];
-    afficherMessage("Merci " + prenom + ", votre message a été préparé.", true);
+    const texteMerci = (langue === "fr")
+      ? "Merci " + prenom + ", votre message a été préparé."
+      : "Thank you " + prenom + ", your message is ready.";
+    afficherMessage(texteMerci, true);
     formulaire.reset();
   });
 
@@ -123,4 +131,18 @@ export function initialiserFormulaire() {
       }
     });
   }
+
+  // Bouton FR/EN : les erreurs déjà affichées sont revérifiées pour
+  // s'afficher dans la nouvelle langue ; le message général est effacé.
+  document.getElementById("btn-langue").addEventListener("click", function () {
+    for (let i = 0; i < regles.length; i++) {
+      const champ = document.getElementById(regles[i].id);
+      if (champ.getAttribute("aria-invalid") === "true") {
+        verifierChamp(regles[i]);
+      }
+    }
+    const boite = document.getElementById("message-formulaire");
+    boite.textContent = "";
+    boite.classList.remove("message-formulaire--succes", "message-formulaire--erreur");
+  });
 }

@@ -4,7 +4,7 @@
 // Sur grand écran, le bouton Menu est caché et le menu toujours visible.
 // ==========================================================
 
-export function initialiserMenu() {
+function initialiserMenu() {
   const bouton = document.querySelector(".bouton-menu");
   const nav = document.querySelector(".entete nav");
   const liens = document.querySelectorAll("#menu-principal a");
@@ -13,7 +13,9 @@ export function initialiserMenu() {
   function changerMenu(ouvrir) {
     nav.classList.toggle("nav--ouverte", ouvrir);
     bouton.setAttribute("aria-expanded", ouvrir ? "true" : "false");
-    bouton.textContent = ouvrir ? "Fermer" : "Menu";
+    // Ternaire : « Fermer » en français, « Close » en anglais (variable langue de langue.js)
+    const texteFermer = (langue === "fr") ? "Fermer" : "Close";
+    bouton.textContent = ouvrir ? texteFermer : "Menu";
   }
 
   // Clic sur le bouton : on inverse l'état actuel
@@ -35,5 +37,11 @@ export function initialiserMenu() {
       changerMenu(false);
       bouton.focus();
     }
+  });
+
+  // Bouton FR/EN : si le menu est ouvert, on remet le texte « Fermer / Close »
+  // dans la nouvelle langue (sans changer l'état du menu)
+  document.getElementById("btn-langue").addEventListener("click", function () {
+    changerMenu(nav.classList.contains("nav--ouverte"));
   });
 }

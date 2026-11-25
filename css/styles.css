@@ -111,8 +111,10 @@ main > section h2 {
   font-weight: 500;
 }
 
-/* Bouton « Menu » (visible seulement sur mobile) */
-.bouton-menu {
+/* Bouton « Menu » (visible seulement sur mobile)
+   et bouton de langue FR/EN (visible partout) : même style */
+.bouton-menu,
+#btn-langue {
   min-height: 2.75rem; /* zone de clic confortable au doigt */
   padding: 0.5rem 1rem;
   background-color: transparent;
@@ -124,9 +126,29 @@ main > section h2 {
 }
 
 .bouton-menu:hover,
-.bouton-menu:focus {
+.bouton-menu:focus,
+#btn-langue:hover,
+#btn-langue:focus {
   border-color: #ffb020;
   color: #ffb020;
+}
+
+/* Le bouton de langue est un peu plus étroit (seulement 2 lettres) */
+#btn-langue {
+  padding: 0.5rem 0.75rem;
+}
+
+/* Groupe des boutons (langue + menu) : poussé à droite avec margin-left: auto */
+.entete__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+/* Sur mobile, logo un peu plus petit pour que les deux boutons tiennent
+   sur la même ligne, même à 360 px de large */
+.logo {
+  font-size: 0.875rem;
 }
 
 /* ---------- 5. NAVIGATION (mobile) ---------- */
@@ -583,8 +605,15 @@ main > section h2 {
     display: none;
   }
 
+  /* Le menu vient après le bouton de langue, avec un espace */
   .entete nav {
     width: auto;
+    margin-left: 1.5rem;
+  }
+
+  /* Taille normale du logo sur grand écran */
+  .logo {
+    font-size: 1rem;
   }
 
   #menu-principal {

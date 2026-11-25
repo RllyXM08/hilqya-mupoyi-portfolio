@@ -30,7 +30,7 @@ hilqya-mupoyi-portfolio/
 │   └── styles.css        Tous les styles (mobile d'abord, thème sombre)
 ├── js/
 │   ├── langue.js         Variable langue, textes FR/EN et bouton FR/EN
-│   ├── projets.js        Données des 6 projets, cartes, filtres et Détails
+│   ├── projets.js        Données des 7 projets, cartes, filtres et Détails
 │   ├── menu.js           Ouverture et fermeture du menu sur mobile
 │   ├── formulaire.js     Validation du formulaire de contact
 │   └── script.js         Point de départ : appelle les 3 fonctions d'initialisation
@@ -63,7 +63,8 @@ Les scripts sont des scripts normaux avec `defer`. Ils s'exécutent dans cet ord
 3. **Calculatrice Android** : calculatrice simple (Kotlin).
 4. **Poste ALIBABA** : gestion d'objets postaux en programmation orientée objet (C#, .NET).
 5. **Agence de location de voitures** : modèle entité-association et modèle relationnel.
-6. **Débogage : collisions de rectangles** : laboratoire d'assurance qualité avec le débogueur (C#, Visual Studio).
+6. **Magasin de téléphones** : base de données SQL Server de 5 tables (SQL Server, SSMS, SQL, Modèle E-A).
+7. **Débogage : collisions de rectangles** : laboratoire d'assurance qualité avec le débogueur (C#, Visual Studio).
 
 ## Auteur
 

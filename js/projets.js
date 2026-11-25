@@ -76,8 +76,8 @@ const projets = [
     categorie: "base-de-donnees",
     description: "Base de données SQL Server d'un magasin de téléphones.",
     descriptionEn: "SQL Server database for a phone store.",
-    technos: ["SQL Server", "SQL"],
-    technosEn: ["SQL Server", "SQL"],
+    technos: ["SQL Server", "SSMS", "SQL", "Modèle E-A"],
+    technosEn: ["SQL Server", "SSMS", "SQL", "ER model"],
     details: "Base de 5 tables (Clients, Telephones, Ventes, LignesVente, Paiements) avec clés étrangères, insertions et requêtes filtrées et triées.",
     detailsEn: "Database of 5 tables (Clients, Telephones, Ventes, LignesVente, Paiements) with foreign keys, inserts and filtered and sorted queries.",
     lien: ""

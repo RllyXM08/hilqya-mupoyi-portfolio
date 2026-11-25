@@ -4,7 +4,10 @@
 // Sur grand écran, le bouton Menu est caché et le menu toujours visible.
 // ==========================================================
 
-function initialiserMenu() {
+// La variable langue ("fr" ou "en") vient de langue.js
+import { langue } from "./langue.js";
+
+export function initialiserMenu() {
   const bouton = document.querySelector(".bouton-menu");
   const nav = document.querySelector(".entete nav");
   const liens = document.querySelectorAll("#menu-principal a");

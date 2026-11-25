@@ -11,15 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css" />
-  <!-- Scripts normaux avec defer : ils attendent que la page soit lue,
-       puis s'exécutent dans cet ordre.
-       langue.js d'abord (variable langue et traductions),
-       script.js en dernier (il appelle les fonctions des 3 autres fichiers). -->
-  <script src="js/langue.js" defer></script>
-  <script src="js/projets.js" defer></script>
-  <script src="js/menu.js" defer></script>
-  <script src="js/formulaire.js" defer></script>
-  <script src="js/script.js" defer></script>
+  <!-- Une seule balise : type="module" attend que la page soit lue avant d'exécuter.
+       script.js importe les autres fichiers avec import (voir js/script.js). -->
+  <script type="module" src="js/script.js"></script>
 </head>
 <!-- id="haut" sur le body : le bouton flottant ramène tout en haut.
      (Sur le header collé, le lien ne marchait pas : il est toujours visible.) -->

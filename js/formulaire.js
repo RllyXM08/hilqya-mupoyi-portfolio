@@ -4,6 +4,9 @@
 // vérifie les champs et affiche les messages. Aucun envoi réel (pas de serveur).
 // ==========================================================
 
+// La variable langue ("fr" ou "en") vient de langue.js
+import { langue } from "./langue.js";
+
 // Courriel : du texte, un @, du texte, un point, du texte (sans espaces).
 // Exemple valide : nom@exemple.com
 const formatCourriel = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -90,7 +93,7 @@ function afficherMessage(texte, estSucces) {
   boite.textContent = texte;
 }
 
-function initialiserFormulaire() {
+export function initialiserFormulaire() {
   const formulaire = document.getElementById("formulaire-contact");
 
   formulaire.addEventListener("submit", function (evenement) {

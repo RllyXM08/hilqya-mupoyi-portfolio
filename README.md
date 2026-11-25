@@ -9,7 +9,7 @@ Il a été réalisé comme projet final du cours « Introduction à la programma
 
 - HTML5
 - CSS3
-- JavaScript (sans framework, sans modules)
+- JavaScript (sans framework, avec modules ES : `import` et `export`)
 
 ## Fonctionnalités
 
@@ -18,6 +18,10 @@ Il a été réalisé comme projet final du cours « Introduction à la programma
 - Bouton flottant pour revenir en haut de la page
 - Formulaire de contact validé en JavaScript
 - Bouton FR/EN pour changer la langue du site (français par défaut)
+
+## Bonus
+
+- `type="module"` : le JavaScript est découpé en modules ES (`import` et `export`)
 
 ## Structure des fichiers
 
@@ -41,20 +45,20 @@ hilqya-mupoyi-portfolio/
         └── .gitkeep
 ```
 
-### Ordre de chargement des scripts
+### Modules JavaScript
 
-Les scripts sont des scripts normaux avec `defer`. Ils s'exécutent dans cet ordre, une fois la page lue :
+`index.html` ne charge qu'un seul script : `<script type="module" src="js/script.js"></script>`. Les autres fichiers sont reliés avec `import` et `export` :
 
-1. `langue.js` : crée la variable `langue` et les traductions, utilisées par les autres fichiers
-2. `projets.js`
-3. `menu.js`
-4. `formulaire.js`
-5. `script.js` : appelle `initialiserProjets()`, `initialiserMenu()` et `initialiserFormulaire()`
+- `langue.js` exporte la variable `langue` (`export let langue`)
+- `projets.js`, `menu.js` et `formulaire.js` importent `langue` et exportent leur fonction `initialiser...`
+- `script.js` importe ces trois fonctions et les appelle
 
 ## Ouvrir le projet en local
 
 1. Télécharger ou cloner le dépôt.
-2. Ouvrir le fichier `index.html` dans un navigateur, ou utiliser l'extension **Live Server** dans VS Code (clic droit sur `index.html` puis « Open with Live Server »).
+2. Ouvrir le dossier dans VS Code, puis utiliser l'extension **Live Server** (clic droit sur `index.html` puis « Open with Live Server »).
+
+Les modules ne marchent pas en double-clic sur `index.html` (adresse `file://`) : le navigateur les bloque et les projets ne s'affichent pas. Il faut un petit serveur local comme Live Server.
 
 ## Projets présentés
 

@@ -3,6 +3,9 @@
 // Étape 3 du portfolio de Hilqya Kabemba Mupoyi
 // ==========================================================
 
+// La variable langue ("fr" ou "en") vient de langue.js
+import { langue } from "./langue.js";
+
 // ---------- 1. DONNÉES ----------
 // Un tableau d'objets : chaque objet décrit un projet.
 // categorie doit être une des valeurs data-categorie des boutons :
@@ -233,11 +236,12 @@ function activerFiltres() {
 
 // ---------- 5. DÉMARRAGE ----------
 // Appelée une seule fois par script.js
-function initialiserProjets() {
+export function initialiserProjets() {
   afficherProjets("tous");
   activerFiltres();
 
-  // Bouton FR/EN : langue.js a déjà changé la variable langue,
+  // Bouton FR/EN : langue.js a déjà changé la variable langue
+  // (son écouteur est ajouté en premier, à l'import),
   // on recrée donc les cartes dans la nouvelle langue, avec le même filtre
   document.getElementById("btn-langue").addEventListener("click", function () {
     afficherProjets(categorieActive);

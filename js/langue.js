@@ -1,11 +1,13 @@
 // ==========================================================
 // langue.js : bouton FR/EN (étape 5b)
-// Chargé AVANT les autres scripts (voir l'ordre dans index.html) :
-// la variable langue est donc connue aussi dans projets.js et formulaire.js.
+// Module ES : projets.js, menu.js et formulaire.js importent la variable
+// langue avec import { langue } from "./langue.js".
 // ==========================================================
 
-// Langue actuelle du site : français par défaut
-let langue = "fr";
+// Langue actuelle du site : français par défaut.
+// export : les autres fichiers peuvent la lire, et ils voient toujours sa
+// valeur à jour. Seul ce fichier la modifie (dans l'écouteur ci-dessous).
+export let langue = "fr";
 
 // Tous les textes de la page, dans les deux langues.
 // La clé = l'id de l'élément HTML, la valeur = le texte à afficher.
@@ -148,6 +150,7 @@ boutonLangue.addEventListener("click", function () {
 });
 
 // Note : projets.js, formulaire.js et menu.js ajoutent aussi leur propre
-// écouteur "click" sur ce bouton. Celui-ci est ajouté en premier (ce script
-// est chargé avant les autres), donc la variable langue est déjà à jour
-// quand les autres écouteurs s'exécutent.
+// écouteur "click" sur ce bouton. Celui-ci est ajouté en premier (ce fichier
+// s'exécute dès qu'il est importé, avant que script.js appelle les fonctions
+// initialiser...), donc la variable langue est déjà à jour quand les autres
+// écouteurs s'exécutent.

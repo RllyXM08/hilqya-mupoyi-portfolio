@@ -13,10 +13,12 @@
   <link rel="stylesheet" href="css/styles.css" />
   <script type="module" src="js/script.js"></script>
 </head>
-<body>
+<!-- id="haut" sur le body : le bouton flottant ramène tout en haut.
+     (Sur le header collé, le lien ne marchait pas : il est toujours visible.) -->
+<body id="haut">
   <!-- Portfolio : une seule page, navigation par ancres -->
   <!-- Chaque .conteneur limite la largeur du contenu et le centre -->
-  <header id="haut" class="entete">
+  <header class="entete">
     <div class="conteneur">
       <a class="logo" href="#accueil">hilqya@portfolio:~$</a>
       <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="menu-principal">Menu</button>
@@ -45,6 +47,11 @@
             <a class="bouton bouton--plein" href="#projets">Voir mes projets</a>
             <a class="bouton bouton--contour" href="#contact">Me contacter</a>
           </p>
+          <!-- Réseaux visibles dès l'arrivée sur la page -->
+          <ul class="reseaux">
+            <li><a class="reseau" href="https://github.com/RllyXM08" target="_blank" rel="noopener noreferrer" aria-label="GitHub (nouvel onglet)">GitHub &#8599;</a></li>
+            <li><a class="reseau" href="https://www.linkedin.com/in/hilqya-mupoyi-8a751142a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (nouvel onglet)">LinkedIn &#8599;</a></li>
+          </ul>
         </div>
         <!-- Photo en couleur originale (1086 × 1094 pixels) -->
         <div class="photo-cadre"><img src="assets/images/photo-hilqya.jpg" alt="Photo de Hilqya Kabemba Mupoyi" width="1086" height="1094"></div>
@@ -96,6 +103,10 @@
       <div class="conteneur">
         <h2><span class="h2__prefixe" aria-hidden="true">// </span>Contact</h2>
         <p>Écrivez-moi à <a href="mailto:hilqyamupoyi08@gmail.com">hilqyamupoyi08@gmail.com</a> ou avec le formulaire ci-dessous.</p>
+        <ul class="reseaux">
+          <li><a class="reseau" href="https://github.com/RllyXM08" target="_blank" rel="noopener noreferrer" aria-label="GitHub (nouvel onglet)">GitHub &#8599;</a></li>
+          <li><a class="reseau" href="https://www.linkedin.com/in/hilqya-mupoyi-8a751142a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (nouvel onglet)">LinkedIn &#8599;</a></li>
+        </ul>
         <form id="formulaire-contact" class="formulaire" novalidate>
           <div class="champ">
             <label for="nom">Nom</label>
@@ -119,12 +130,10 @@
   <footer class="pied">
     <div class="conteneur">
       <p>&copy; 2026 Hilqya Kabemba Mupoyi · Fait avec HTML, CSS et JavaScript</p>
-      <ul class="reseaux">
-        <li><a href="https://www.linkedin.com/in/hilqya-mupoyi-8a751142a" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-        <li><a href="https://github.com/RllyXM08" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-      </ul>
-      <p><a href="#haut">Haut de page</a></p>
     </div>
   </footer>
+
+  <!-- Bouton flottant fixé en bas à droite de l'écran -->
+  <a class="bouton-haut" href="#haut" aria-label="Retour en haut de la page" title="Haut de page">&uarr;</a>
 </body>
 </html>

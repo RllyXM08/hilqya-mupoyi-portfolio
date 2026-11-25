@@ -5,13 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio de Hilqya Kabemba Mupoyi, étudiant en programmation informatique au Collège La Cité." />
   <title>Hilqya Kabemba Mupoyi · Portfolio</title>
+  <!-- Polices Google : IBM Plex Mono (titres, code) et Inter (texte) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <script type="module" src="js/script.js"></script>
 </head>
 <body>
   <!-- Portfolio : une seule page, navigation par ancres -->
   <header id="haut" class="entete">
-    <a class="logo" href="#accueil">Hilqya Mupoyi</a>
+    <a class="logo" href="#accueil">hilqya@portfolio:~$</a>
     <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="menu-principal">Menu</button>
     <nav aria-label="Navigation principale">
       <ul id="menu-principal" class="menu">
@@ -26,25 +30,30 @@
 
   <main>
     <section id="accueil" class="heros">
-      <h1>Hilqya Kabemba Mupoyi</h1>
-      <p class="accroche">Étudiant en programmation informatique au Collège La Cité</p>
-      <p>Bienvenue sur mon portfolio. Vous y trouverez mon parcours, mes compétences et les projets que j'ai réalisés.</p>
-      <p class="actions">
-        <a class="bouton" href="#projets">Voir mes projets</a>
-        <a class="bouton bouton-secondaire" href="#contact">Me contacter</a>
-      </p>
+      <!-- Texte regroupé pour le placer à côté de la photo plus tard -->
+      <div class="accueil__texte">
+        <p class="accueil__salut">&gt; bonjour, je suis</p>
+        <h1 class="accueil__nom">Hilqya Kabemba Mupoyi</h1>
+        <p class="accueil__titre">Étudiant en programmation informatique</p>
+        <p>Bienvenue sur mon portfolio. Vous y trouverez mon parcours, mes compétences et les projets que j'ai réalisés.</p>
+        <p class="actions">
+          <a class="bouton" href="#projets">Voir mes projets</a>
+          <a class="bouton bouton-secondaire" href="#contact">Me contacter</a>
+        </p>
+      </div>
+      <!-- Photo (le fichier sera ajouté dans assets/images/) -->
+      <div class="photo-cadre"><img src="assets/images/photo-hilqya.jpg" alt="Photo de Hilqya Kabemba Mupoyi" width="400" height="400"></div>
     </section>
 
     <section id="a-propos">
       <h2>À propos</h2>
-      <!-- À remplacer par mon propre texte -->
-      <p>[Mon parcours : de l'électronique à la programmation.]</p>
-      <p>[Ce que je cherche : stage, projets, apprentissage.]</p>
+      <!-- Texte à fournir par moi -->
+      <p>[À COMPLÉTER]</p>
     </section>
 
     <section id="competences">
       <h2>Compétences</h2>
-      <ul class="competences">
+      <ul class="competences__liste">
         <li>HTML et CSS</li>
         <li>JavaScript</li>
         <li>Java</li>

@@ -25,6 +25,8 @@ const traductions = {
     "accueil-intro": "Bienvenue sur mon portfolio. Vous y trouverez mon parcours, mes compétences et les projets que j'ai réalisés.",
     "accueil-btn-projets": "Voir mes projets",
     "accueil-btn-contact": "Me contacter",
+    "cv-voir": "Voir mon CV",
+    "cv-telecharger": "Télécharger mon CV",
     // À propos
     "titre-apropos": "À propos",
     "apropos-p1": "Je m'appelle Hilqya Kabemba Mupoyi et je suis étudiant en programmation informatique au Collège La Cité, à Ottawa. Avant d'arriver au Canada, j'ai obtenu un diplôme d'études secondaires en électronique en République démocratique du Congo, ce qui m'a donné le goût de comprendre comment les choses fonctionnent, du circuit jusqu'au code.",
@@ -72,6 +74,8 @@ const traductions = {
     "accueil-intro": "Welcome to my portfolio. Here you will find my background, my skills and the projects I have built.",
     "accueil-btn-projets": "See my projects",
     "accueil-btn-contact": "Contact me",
+    "cv-voir": "View my CV",
+    "cv-telecharger": "Download my CV",
     // À propos
     "titre-apropos": "About",
     "apropos-p1": "My name is Hilqya Kabemba Mupoyi and I am a computer programming student at Collège La Cité, in Ottawa. Before coming to Canada, I earned a high school diploma in electronics in the Democratic Republic of the Congo, which gave me the desire to understand how things work, from the circuit to the code.",
@@ -147,6 +151,14 @@ boutonLangue.addEventListener("click", function () {
     const finTexte = (langue === "fr") ? " (nouvel onglet)" : " (new tab)";
     liensReseaux[i].setAttribute("aria-label", nomReseau + finTexte);
   }
+
+  // 8. Boutons du CV : le fichier PDF (français ou anglais) suit la langue.
+  // Le texte des boutons est déjà traduit par la boucle for...in plus haut.
+  const fichierCv = (langue === "fr") ? "assets/cv/CV_Hilqya_Kabemba_Mupoyi_FR.pdf" : "assets/cv/CV_Hilqya_Kabemba_Mupoyi_EN.pdf";
+  const boutonVoirCv = document.getElementById("cv-voir");
+  boutonVoirCv.setAttribute("href", fichierCv);
+  boutonVoirCv.setAttribute("aria-label", (langue === "fr") ? "Voir mon CV (PDF, nouvel onglet)" : "View my CV (PDF, new tab)");
+  document.getElementById("cv-telecharger").setAttribute("href", fichierCv);
 });
 
 // Note : projets.js, formulaire.js et menu.js ajoutent aussi leur propre

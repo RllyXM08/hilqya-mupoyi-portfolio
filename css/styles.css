@@ -211,6 +211,13 @@ main > section h2 {
   color: #a5b0ba;
 }
 
+/* Groupes de boutons de l'accueil : en ligne, et à la ligne s'il manque de place */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
 /* Boutons : base commune */
 .bouton {
   display: inline-block;

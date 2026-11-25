@@ -18,6 +18,7 @@ Il a été réalisé comme projet final du cours « Introduction à la programma
 - Bouton flottant pour revenir en haut de la page
 - Formulaire de contact validé en JavaScript
 - Bouton FR/EN pour changer la langue du site (français par défaut)
+- CV en PDF (version française et version anglaise) : boutons « Voir mon CV » et « Télécharger mon CV » dans l'accueil, qui suivent la langue du site
 
 ## Bonus
 
@@ -39,6 +40,9 @@ hilqya-mupoyi-portfolio/
 │   ├── formulaire.js     Validation du formulaire de contact
 │   └── script.js         Point de départ : appelle les 3 fonctions d'initialisation
 └── assets/
+    ├── cv/
+    │   ├── CV_Hilqya_Kabemba_Mupoyi_FR.pdf  CV en français (version web)
+    │   └── CV_Hilqya_Kabemba_Mupoyi_EN.pdf  CV en anglais (version web)
     └── images/
         ├── favicon.svg       Icône de l'onglet
         ├── photo-hilqya.jpg  Photo de l'accueil

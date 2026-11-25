@@ -24,3 +24,11 @@
 - Outil : Claude Code (Sonnet 5.5)
 - Besoin / prompt (résumé) : Étape 2B : CSS de base (variables, header, accueil, photo, favicon)
 - Mes vérifications : [À COMPLÉTER]
+
+### Entrée 4
+- Date : 25 novembre 2026
+- Outil : Claude Code (Sonnet 5.5)
+- Besoin / prompt (résumé) : Étape 2C : CSS des sections, compétences, projets, formulaire et pied de page
+- Remplacement des notions non vues en cours par les méthodes des modules 4 à 7
+- Photo ajoutée en couleur originale (1086 × 1094), dimensions de l'img mises à jour ; vérification finale des méthodes du cours.
+- Mes vérifications : [À COMPLÉTER]

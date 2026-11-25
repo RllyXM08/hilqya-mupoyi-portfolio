@@ -1,44 +1,31 @@
 /* ==========================================================
    styles.css : portfolio de Hilqya Kabemba Mupoyi
    Méthode : mobile d'abord (styles de base = téléphone),
-   puis @media (min-width: 48rem) pour les écrans plus larges.
+   puis @media (min-width: …rem) pour les écrans plus larges.
+
+   Palette (écrite directement dans les règles) :
+   fond #0a0a0a · surface #141414 · bordure #2a2a2a
+   texte #e8ecef · texte doux #a5b0ba
+   accent ambre #ffb020 · texte sur ambre #1a1205
+   Polices : "IBM Plex Mono" (titres, éléments terminal) et "Inter" (texte)
    ========================================================== */
 
-/* ---------- 1. VARIABLES ----------
-   Les variables CSS gardent les couleurs et polices à un seul endroit :
-   si je change une valeur ici, tout le site change. */
-:root {
-  --fond: #0a0a0a;             /* fond de la page */
-  --surface: #141414;          /* fond des zones en relief (cartes, photo) */
-  --bordure: #2a2a2a;          /* couleur des traits et contours */
-  --texte: #e8ecef;            /* texte principal */
-  --texte-doux: #a5b0ba;       /* texte secondaire, moins contrasté */
-  --accent: #ffb020;           /* couleur d'accent (ambre) */
-  --texte-sur-accent: #1a1205; /* texte posé sur un fond ambre */
-  --rayon: 4px;                /* arrondi des coins */
-  --police-mono: "IBM Plex Mono", monospace; /* titres et éléments « terminal » */
-  --police-texte: "Inter", sans-serif;       /* texte courant */
-}
+/* ---------- 1. BASE ---------- */
 
-/* ---------- 2. BASE ---------- */
-
-/* box-sizing: la largeur d'un élément inclut son padding et sa bordure.
-   Le défilement vers une ancre est animé (smooth). */
+/* box-sizing : la largeur d'un élément inclut son padding et sa bordure */
 html {
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
-/* Tous les éléments héritent de ce mode de calcul */
 *, *::before, *::after {
   box-sizing: inherit;
 }
 
 body {
   margin: 0;
-  background-color: var(--fond);
-  color: var(--texte);
-  font-family: var(--police-texte);
+  background-color: #0a0a0a;
+  color: #e8ecef;
+  font-family: "Inter", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -49,48 +36,78 @@ img {
   display: block;
 }
 
-/* Liens : sans soulignement, ambre au survol ou au focus clavier */
+/* Liens : sans soulignement, ambre au survol (souris) et au focus (clavier) */
 a {
-  color: var(--texte);
+  color: #e8ecef;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: all 0.2s;
 }
 
 a:hover,
-a:focus-visible {
-  color: var(--accent);
-}
-
-/* Contour visible pour la navigation au clavier (tous les éléments) */
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+a:focus {
+  color: #ffb020;
 }
 
 h1, h2, h3 {
-  font-family: var(--police-mono);
+  font-family: "IBM Plex Mono", monospace;
 }
 
-/* ---------- 3. EN-TÊTE ---------- */
+/* ---------- 2. LARGEUR DU CONTENU ----------
+   Le .conteneur limite la largeur (max-width) et centre le bloc
+   (margin 0 auto). Le fond et les traits des sections restent sur toute
+   la largeur de l'écran ; seul le contenu est limité à 70rem. */
+.conteneur {
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
 
-/* Reste collé en haut de l'écran. Flex : logo à gauche, bouton à droite,
-   et la nav passe à la ligne (flex-wrap) quand elle est ouverte. */
+/* ---------- 3. SECTIONS ---------- */
+/* Le padding du haut (4rem) est plus grand que la hauteur du header collé :
+   le titre n'est donc pas caché après un clic sur le menu. */
+main > section {
+  padding: 4rem 0;
+  border-top: 1px solid #2a2a2a;
+}
+
+/* Pas de trait au-dessus de l'accueil : le header a déjà le sien */
+#accueil {
+  border-top: 0;
+}
+
+main > section h2 {
+  margin-top: 0;
+}
+
+/* Préfixe « // » en ambre devant chaque titre de section */
+.h2__prefixe {
+  color: #ffb020;
+}
+
+/* ---------- 4. EN-TÊTE ---------- */
+
+/* Collé en haut de l'écran pendant le défilement */
 .entete {
   position: sticky;
   top: 0;
   z-index: 10;
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+/* Flex : logo à gauche, bouton à droite, la nav passe à la ligne */
+.entete .conteneur {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
-  background-color: var(--fond);
-  border-bottom: 1px solid var(--bordure);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .logo {
-  font-family: var(--police-mono);
-  color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
+  color: #ffb020;
   font-weight: 500;
 }
 
@@ -99,32 +116,30 @@ h1, h2, h3 {
   min-height: 2.75rem; /* zone de clic confortable au doigt */
   padding: 0.5rem 1rem;
   background-color: transparent;
-  border: 1px solid var(--bordure);
-  border-radius: var(--rayon);
-  color: var(--texte);
-  font-family: var(--police-mono);
+  border: 1px solid #2a2a2a;
+  color: #e8ecef;
+  font-family: "IBM Plex Mono", monospace;
   font-size: 1rem;
-  cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
+  transition: all 0.2s;
 }
 
 .bouton-menu:hover,
-.bouton-menu:focus-visible {
-  border-color: var(--accent);
-  color: var(--accent);
+.bouton-menu:focus {
+  border-color: #ffb020;
+  color: #ffb020;
 }
 
-/* ---------- 4. NAVIGATION (mobile) ---------- */
+/* ---------- 5. NAVIGATION (mobile) ---------- */
 
-/* La nav prend toute la largeur, donc elle passe sous le logo */
+/* La nav prend toute la largeur : elle passe sous le logo */
 .entete nav {
-  flex-basis: 100%;
+  width: 100%;
 }
 
 /* Menu caché par défaut sur mobile */
 #menu-principal {
   display: none;
-  list-style: none;  /* pas de puces */
+  list-style: none; /* pas de puces */
   margin: 0;
   padding: 0;
 }
@@ -138,30 +153,29 @@ h1, h2, h3 {
 #menu-principal a {
   display: block;
   padding: 0.75rem 0;
-  font-family: var(--police-mono);
-  color: var(--texte-doux);
+  font-family: "IBM Plex Mono", monospace;
+  color: #a5b0ba;
 }
 
 #menu-principal a:hover,
-#menu-principal a:focus-visible {
-  color: var(--accent);
+#menu-principal a:focus {
+  color: #ffb020;
 }
 
-/* ---------- 5. ACCUEIL ---------- */
+/* ---------- 6. ACCUEIL ---------- */
 
 /* Mobile : texte et photo empilés (colonne) */
-#accueil {
+#accueil .conteneur {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem 1rem;
 }
 
 .accueil__salut {
   margin: 0;
-  font-family: var(--police-mono);
+  font-family: "IBM Plex Mono", monospace;
   font-size: 0.875rem;
-  color: var(--accent);
+  color: #ffb020;
 }
 
 .accueil__nom {
@@ -172,83 +186,354 @@ h1, h2, h3 {
 
 .accueil__titre {
   margin: 0 0 1rem;
-  color: var(--texte-doux);
+  color: #a5b0ba;
 }
 
-/* Boutons : base commune (liens d'accueil) */
+/* Boutons : base commune */
 .bouton {
   display: inline-block;
   padding: 0.75rem 1.25rem;
   border: 1px solid transparent;
-  border-radius: var(--rayon);
-  font-family: var(--police-mono);
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  font-family: "IBM Plex Mono", monospace;
+  transition: all 0.2s;
 }
 
-/* Bouton plein : fond ambre */
+/* Bouton plein : fond ambre ; au survol / focus : contour ambre */
 .bouton--plein {
-  background-color: var(--accent);
-  border-color: var(--accent);
-  color: var(--texte-sur-accent);
+  background-color: #ffb020;
+  border-color: #ffb020;
+  color: #1a1205;
 }
 
 .bouton--plein:hover,
-.bouton--plein:focus-visible {
+.bouton--plein:focus {
   background-color: transparent;
-  color: var(--accent);
+  color: #ffb020;
 }
 
 /* Bouton contour : simple bordure */
 .bouton--contour {
-  border-color: var(--bordure);
-  color: var(--texte);
+  border-color: #2a2a2a;
+  color: #e8ecef;
 }
 
 .bouton--contour:hover,
-.bouton--contour:focus-visible {
-  border-color: var(--accent);
-  color: var(--accent);
+.bouton--contour:focus {
+  border-color: #ffb020;
+  color: #ffb020;
 }
 
-/* ---------- 6. PHOTO ---------- */
-
-/* isolation: isolate crée un contexte d'empilement : le cadre décalé
-   (z-index -1) reste derrière la photo sans passer derrière la page. */
+/* ---------- 7. PHOTO ----------
+   Le cadre ambre est la bordure de .photo-cadre. L'image est décalée vers le
+   haut et la gauche avec position: relative : le cadre dépasse donc en bas
+   et à droite, derrière la photo. */
 .photo-cadre {
-  position: relative;
-  isolation: isolate;
   max-width: 18rem;
+  border: 2px solid #ffb020;
 }
 
 .photo-cadre img {
+  position: relative;
+  top: -0.75rem;
+  left: -0.75rem;
   width: 100%;
-  aspect-ratio: 1;        /* image carrée */
-  object-fit: cover;      /* recadre sans déformer */
-  filter: grayscale(100%);
-  border-radius: var(--rayon);
-  background-color: var(--surface); /* visible tant que la photo manque */
+  height: auto; /* garde les proportions de la photo */
+  background-color: #141414; /* visible tant que la photo manque */
 }
 
-/* Cadre ambre décalé derrière la photo */
-.photo-cadre::before {
-  content: "";
-  position: absolute;
-  inset: 0;               /* même taille que la photo */
-  border: 2px solid var(--accent);
-  border-radius: var(--rayon);
-  transform: translate(0.75rem, 0.75rem);
-  z-index: -1;
+/* ---------- 8. À PROPOS ---------- */
+#a-propos p {
+  max-width: 36rem; /* largeur de lecture confortable */
+  color: #a5b0ba;
 }
 
-/* ---------- 7. ÉCRANS LARGES (48rem = 768 px et plus) ---------- */
+/* ---------- 9. COMPÉTENCES ---------- */
+.competences__liste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Chaque compétence = une pastille */
+.competences__liste li {
+  padding: 0.5rem 1rem;
+  background-color: #141414;
+  border: 1px solid #2a2a2a;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.competences__liste li:hover {
+  border-color: #ffb020;
+}
+
+/* ---------- 10. PROJETS : FILTRES ---------- */
+.filtres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.filtre {
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid #2a2a2a;
+  color: #e8ecef;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.filtre:hover,
+.filtre:focus {
+  border-color: #ffb020;
+  color: #ffb020;
+}
+
+/* Filtre actif : fond ambre (placé après :hover pour garder la priorité) */
+.filtre--actif,
+.filtre--actif:hover,
+.filtre--actif:focus {
+  background-color: #ffb020;
+  border-color: #ffb020;
+  color: #1a1205;
+}
+
+/* ---------- 11. PROJETS : CARTES ----------
+   Le JS créera les cartes à l'étape 3. Trois colonnes en flex :
+   chaque carte a une largeur (width) calculée avec calc(). */
+#liste-projets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.carte-projet {
+  width: 100%; /* mobile : une carte par ligne */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background-color: #141414;
+  border: 1px solid #2a2a2a;
+  transition: all 0.2s;
+}
+
+.carte-projet:hover {
+  border-color: #ffb020;
+  transform: translate(0, -2px);
+}
+
+.carte-projet__categorie {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  color: #ffb020;
+  text-transform: uppercase;
+}
+
+.carte-projet__titre {
+  margin: 0;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1.25rem;
+}
+
+/* flex: 1 : la description prend l'espace libre et pousse le reste en bas */
+.carte-projet__description {
+  flex: 1;
+  margin: 0;
+  color: #a5b0ba;
+}
+
+.carte-projet__technos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carte-projet__technos li {
+  padding: 0.125rem 0.5rem;
+  border: 1px solid #2a2a2a;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+}
+
+.carte-projet__details {
+  margin: 0;
+  color: #a5b0ba;
+}
+
+/* Bouton « Détails » : style contour */
+.bouton-details {
+  min-height: 2.75rem;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid #2a2a2a;
+  color: #e8ecef;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.bouton-details:hover,
+.bouton-details:focus {
+  border-color: #ffb020;
+  color: #ffb020;
+}
+
+/* ---------- 12. CONTACT ---------- */
+/* Lien courriel : ambre, souligné au survol et au focus */
+#contact p a {
+  color: #ffb020;
+}
+
+#contact p a:hover,
+#contact p a:focus {
+  text-decoration: underline;
+}
+
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* le bouton Envoyer reste au début */
+  gap: 1.25rem;
+  max-width: 40rem;
+}
+
+/* label au-dessus de son champ */
+.champ {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  width: 100%;
+}
+
+.formulaire input,
+.formulaire textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #0a0a0a;
+  border: 1px solid #2a2a2a;
+  color: #e8ecef;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.formulaire textarea {
+  min-height: 8rem;
+}
+
+.formulaire input:hover,
+.formulaire input:focus,
+.formulaire textarea:hover,
+.formulaire textarea:focus {
+  border-color: #ffb020;
+}
+
+/* Préparé pour l'étape 4 (validation en JS) */
+.champ--erreur input,
+.champ--erreur textarea {
+  border-color: #ff6b6b;
+}
+
+.message-erreur {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #ff8a8a;
+}
+
+/* Boîte de message : sans bordure ni padding tant qu'elle est vide ;
+   le cadre vient des variantes ci-dessous (ajoutées par le JS) */
+.message-formulaire {
+  margin: 0;
+}
+
+.message-formulaire--succes {
+  padding: 0.75rem 1rem;
+  border: 1px solid #4ade80;
+  color: #4ade80;
+}
+
+.message-formulaire--erreur {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ff8a8a;
+  color: #ff8a8a;
+}
+
+/* ---------- 13. PIED DE PAGE ---------- */
+.pied {
+  padding: 2rem 0;
+  border-top: 1px solid #2a2a2a;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  color: #a5b0ba;
+}
+
+/* Mobile : tout est empilé (colonne) */
+.pied .conteneur {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pied p {
+  margin: 0;
+}
+
+/* Liens LinkedIn et GitHub : en ligne */
+.reseaux {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pied a {
+  color: #a5b0ba;
+}
+
+.pied a:hover,
+.pied a:focus {
+  color: #ffb020;
+}
+
+/* ---------- 14. ÉCRANS LARGES (48rem = 768 px et plus) ---------- */
 @media (min-width: 48rem) {
+  /* Marge horizontale plus grande */
+  .conteneur {
+    padding: 0 2rem;
+  }
+
+  .entete .conteneur {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  main > section {
+    padding: 5rem 0;
+  }
+
   /* Plus de bouton Menu : le menu est toujours affiché, en ligne */
   .bouton-menu {
     display: none;
   }
 
   .entete nav {
-    flex-basis: auto;
+    width: auto;
   }
 
   #menu-principal {
@@ -262,26 +547,38 @@ h1, h2, h3 {
 
   /* Accueil : texte à gauche, photo à droite */
   #accueil {
+    padding: 3.5rem 0;
+  }
+
+  #accueil .conteneur {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 4rem 2rem;
+    gap: 3rem; /* écart minimal entre le texte et la photo */
   }
 
   .accueil__nom {
     font-size: 3rem;
   }
-}
 
-/* ---------- 8. MOUVEMENT RÉDUIT ----------
-   Si l'utilisateur demande moins d'animations dans son système,
-   on coupe les transitions et le défilement animé. */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  /* Cartes : 2 colonnes (moitié de la largeur moins la moitié du gap) */
+  .carte-projet {
+    width: calc((100% - 1.5rem) / 2);
   }
 
-  *, *::before, *::after {
-    transition: none !important;
+  /* Pied de page : en ligne, espacé, avec retour à la ligne permis */
+  .pied .conteneur {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* ---------- 15. TRÈS GRANDS ÉCRANS (64rem = 1024 px et plus) ---------- */
+@media (min-width: 64rem) {
+  /* Cartes : 3 colonnes (un tiers moins les 2 gaps partagés) */
+  .carte-projet {
+    width: calc((100% - 3rem) / 3);
   }
 }

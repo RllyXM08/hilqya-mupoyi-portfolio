@@ -15,101 +15,116 @@
 </head>
 <body>
   <!-- Portfolio : une seule page, navigation par ancres -->
+  <!-- Chaque .conteneur limite la largeur du contenu et le centre -->
   <header id="haut" class="entete">
-    <a class="logo" href="#accueil">hilqya@portfolio:~$</a>
-    <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="menu-principal">Menu</button>
-    <nav aria-label="Navigation principale">
-      <ul id="menu-principal" class="menu">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#a-propos">À propos</a></li>
-        <li><a href="#competences">Compétences</a></li>
-        <li><a href="#projets">Projets</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+    <div class="conteneur">
+      <a class="logo" href="#accueil">hilqya@portfolio:~$</a>
+      <button type="button" class="bouton-menu" aria-expanded="false" aria-controls="menu-principal">Menu</button>
+      <nav aria-label="Navigation principale">
+        <ul id="menu-principal" class="menu">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#a-propos">À propos</a></li>
+          <li><a href="#competences">Compétences</a></li>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section id="accueil" class="heros">
-      <!-- Texte regroupé pour le placer à côté de la photo plus tard -->
-      <div class="accueil__texte">
-        <p class="accueil__salut">&gt; bonjour, je suis</p>
-        <h1 class="accueil__nom">Hilqya Kabemba Mupoyi</h1>
-        <p class="accueil__titre">Étudiant en programmation informatique</p>
-        <p>Bienvenue sur mon portfolio. Vous y trouverez mon parcours, mes compétences et les projets que j'ai réalisés.</p>
-        <p class="actions">
-          <a class="bouton bouton--plein" href="#projets">Voir mes projets</a>
-          <a class="bouton bouton--contour" href="#contact">Me contacter</a>
-        </p>
+      <div class="conteneur">
+        <!-- Texte regroupé pour le placer à côté de la photo -->
+        <div class="accueil__texte">
+          <p class="accueil__salut">&gt; bonjour, je suis</p>
+          <h1 class="accueil__nom">Hilqya Kabemba Mupoyi</h1>
+          <p class="accueil__titre">Étudiant en programmation informatique</p>
+          <p>Bienvenue sur mon portfolio. Vous y trouverez mon parcours, mes compétences et les projets que j'ai réalisés.</p>
+          <p class="actions">
+            <a class="bouton bouton--plein" href="#projets">Voir mes projets</a>
+            <a class="bouton bouton--contour" href="#contact">Me contacter</a>
+          </p>
+        </div>
+        <!-- Photo en couleur originale (1086 × 1094 pixels) -->
+        <div class="photo-cadre"><img src="assets/images/photo-hilqya.jpg" alt="Photo de Hilqya Kabemba Mupoyi" width="1086" height="1094"></div>
       </div>
-      <!-- Photo (le fichier sera ajouté dans assets/images/) -->
-      <div class="photo-cadre"><img src="assets/images/photo-hilqya.jpg" alt="Photo de Hilqya Kabemba Mupoyi" width="400" height="400"></div>
     </section>
 
     <section id="a-propos">
-      <h2>À propos</h2>
-      <!-- Texte à fournir par moi -->
-      <p>[À COMPLÉTER]</p>
+      <div class="conteneur">
+        <h2><span class="h2__prefixe" aria-hidden="true">// </span>À propos</h2>
+        <!-- Texte à fournir par moi -->
+        <p>[À COMPLÉTER]</p>
+      </div>
     </section>
 
     <section id="competences">
-      <h2>Compétences</h2>
-      <ul class="competences__liste">
-        <li>HTML et CSS</li>
-        <li>JavaScript</li>
-        <li>Java</li>
-        <li>C# et .NET</li>
-        <li>Kotlin et Android</li>
-        <li>Modélisation de bases de données</li>
-        <li>Git et GitHub</li>
-        <li>Linux et Bash</li>
-      </ul>
+      <div class="conteneur">
+        <h2><span class="h2__prefixe" aria-hidden="true">// </span>Compétences</h2>
+        <ul class="competences__liste">
+          <li>HTML et CSS</li>
+          <li>JavaScript</li>
+          <li>Java</li>
+          <li>C# et .NET</li>
+          <li>Kotlin et Android</li>
+          <li>Modélisation de bases de données</li>
+          <li>Git et GitHub</li>
+          <li>Linux et Bash</li>
+        </ul>
+      </div>
     </section>
 
     <section id="projets">
-      <h2>Projets</h2>
-      <p>Choisissez une catégorie pour filtrer les projets.</p>
-      <div class="filtres">
-        <button type="button" class="filtre actif" data-categorie="tous">Tous</button>
-        <button type="button" class="filtre" data-categorie="web">Web</button>
-        <button type="button" class="filtre" data-categorie="mobile">Mobile</button>
-        <button type="button" class="filtre" data-categorie="logiciel">Logiciel</button>
-        <button type="button" class="filtre" data-categorie="base-de-donnees">Base de données</button>
-      </div>
-      <div id="liste-projets" class="liste-projets">
-        <!-- Les cartes seront créées en JavaScript (étape 3) -->
+      <div class="conteneur">
+        <h2><span class="h2__prefixe" aria-hidden="true">// </span>Projets</h2>
+        <p>Choisissez une catégorie pour filtrer les projets.</p>
+        <div class="filtres">
+          <button type="button" class="filtre filtre--actif" data-categorie="tous" aria-pressed="true">Tous</button>
+          <button type="button" class="filtre" data-categorie="web" aria-pressed="false">Web</button>
+          <button type="button" class="filtre" data-categorie="mobile" aria-pressed="false">Mobile</button>
+          <button type="button" class="filtre" data-categorie="logiciel" aria-pressed="false">Logiciel</button>
+          <button type="button" class="filtre" data-categorie="base-de-donnees" aria-pressed="false">Base de données</button>
+        </div>
+        <div id="liste-projets" class="liste-projets">
+          <!-- Les cartes seront créées en JavaScript (étape 3) -->
+        </div>
       </div>
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
-      <p>Écrivez-moi à <a href="mailto:hilqyamupoyi08@gmail.com">hilqyamupoyi08@gmail.com</a> ou avec le formulaire ci-dessous.</p>
-      <form id="formulaire-contact" class="formulaire" novalidate>
-        <p class="champ">
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" autocomplete="name" required />
-        </p>
-        <p class="champ">
-          <label for="courriel">Courriel</label>
-          <input type="email" id="courriel" name="courriel" autocomplete="email" required />
-        </p>
-        <p class="champ">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-        </p>
-        <button type="submit" class="bouton bouton--plein">Envoyer</button>
-        <p id="message-formulaire" class="message-formulaire" role="status" aria-live="polite"></p>
-      </form>
+      <div class="conteneur">
+        <h2><span class="h2__prefixe" aria-hidden="true">// </span>Contact</h2>
+        <p>Écrivez-moi à <a href="mailto:hilqyamupoyi08@gmail.com">hilqyamupoyi08@gmail.com</a> ou avec le formulaire ci-dessous.</p>
+        <form id="formulaire-contact" class="formulaire" novalidate>
+          <div class="champ">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" autocomplete="name" required />
+          </div>
+          <div class="champ">
+            <label for="courriel">Courriel</label>
+            <input type="email" id="courriel" name="courriel" autocomplete="email" required />
+          </div>
+          <div class="champ">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="bouton bouton--plein">Envoyer</button>
+          <p id="message-formulaire" class="message-formulaire" role="status" aria-live="polite"></p>
+        </form>
+      </div>
     </section>
   </main>
 
   <footer class="pied">
-    <p>&copy; 2026 Hilqya Kabemba Mupoyi · Fait avec HTML, CSS et JavaScript</p>
-    <ul class="reseaux">
-      <li><a href="https://www.linkedin.com/in/hilqya-mupoyi-8a751142a" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-      <li><a href="https://github.com/RllyXM08" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-    </ul>
-    <p><a href="#haut">Haut de page</a></p>
+    <div class="conteneur">
+      <p>&copy; 2026 Hilqya Kabemba Mupoyi · Fait avec HTML, CSS et JavaScript</p>
+      <ul class="reseaux">
+        <li><a href="https://www.linkedin.com/in/hilqya-mupoyi-8a751142a" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/RllyXM08" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+      </ul>
+      <p><a href="#haut">Haut de page</a></p>
+    </div>
   </footer>
 </body>
 </html>

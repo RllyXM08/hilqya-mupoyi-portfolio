@@ -1,5 +1,5 @@
 // ==========================================================
-// projets.js : données des 6 projets, création des cartes et filtre
+// projets.js : données des 7 projets, création des cartes et filtre
 // Étape 3 du portfolio de Hilqya Kabemba Mupoyi
 // ==========================================================
 
@@ -8,28 +8,30 @@
 // categorie doit être une des valeurs data-categorie des boutons :
 // "web", "mobile", "logiciel" ou "base-de-donnees".
 // lien : adresse du code sur GitHub ; "" = pas de lien affiché.
-// titreEn, descriptionEn, detailsEn : les mêmes textes en anglais (étape 5b).
+// titreEn, descriptionEn, detailsEn, technosEn : les mêmes textes en anglais (étape 5b).
 const projets = [
   {
     titre: "Lungeni",
     titreEn: "Lungeni", // titre en anglais
     categorie: "web",
-    description: "Plateforme de gestion scolaire pour des écoles de Kinshasa : inscriptions, présences, notes et bulletins.",
-    descriptionEn: "School management platform for schools in Kinshasa: enrolment, attendance, grades and report cards.",
-    technos: ["C#", "ASP.NET Core", "Blazor", "SQL Server"],
-    details: "Projet personnel en cours de développement, avec des rôles différents (direction, enseignants, parents, élèves). Le code est privé.",
-    detailsEn: "Personal project in progress, with different roles (principal, teachers, parents, students). The code is private.",
+    description: "Plateforme web de gestion scolaire pour des écoles de Kinshasa.",
+    descriptionEn: "Web school management platform for schools in Kinshasa.",
+    technos: ["C#", "ASP.NET Core", "Blazor", "SQL Server", "Entity Framework Core"],
+    technosEn: ["C#", "ASP.NET Core", "Blazor", "SQL Server", "Entity Framework Core"],
+    details: "Inscriptions, présences, notes et bulletins, frais et reçus de caisse, notifications, tableaux de bord et portails par rôle (direction, caisse, enseignant, parent, élève). Projet personnel en cours, développé avec un assistant IA (Claude Code). Le code est privé.",
+    detailsEn: "Enrolment, attendance, grades and report cards, fees and cash receipts, notifications, dashboards and portals by role (principal, cashier, teacher, parent, student). Personal project in progress, built with an AI assistant (Claude Code). The code is private.",
     lien: ""
   },
   {
     titre: "Gestion des étudiants",
     titreEn: "Student management", // titre en anglais
     categorie: "mobile",
-    description: "Application Android pour ajouter, consulter et gérer une liste d'étudiants.",
-    descriptionEn: "Android app to add, view and manage a list of students.",
+    description: "Application Android (Kotlin) pour ajouter, consulter et gérer une liste d'étudiants.",
+    descriptionEn: "Android app (Kotlin) to add, view and manage a list of students.",
     technos: ["Kotlin", "Android Studio"],
-    details: "Projet de cours : interface Android, tableaux et conservation de l'état de l'écran quand on tourne le téléphone.",
-    detailsEn: "Course project: Android interface, arrays and keeping the screen state when the phone is rotated.",
+    technosEn: ["Kotlin", "Android Studio"],
+    details: "Ajout par bouton flottant, suppression par clic, détails par clic long (deuxième activité avec Intent), réinitialisation par le menu, pas de doublon. Les données sont conservées à la rotation, avec une mise en page paysage.",
+    detailsEn: "Adding with a floating button, deleting with a click, details with a long click (second activity with an Intent), reset from the menu, no duplicates. Data is kept when the phone is rotated, with a landscape layout.",
     lien: ""
   },
   {
@@ -39,6 +41,7 @@ const projets = [
     description: "Calculatrice simple pour Android avec les quatre opérations de base.",
     descriptionEn: "Simple Android calculator with the four basic operations.",
     technos: ["Kotlin", "Android Studio"],
+    technosEn: ["Kotlin", "Android Studio"],
     details: "Projet de cours : gestion des boutons, affichage du résultat et traitement des erreurs (division par zéro).",
     detailsEn: "Course project: button handling, result display and error handling (division by zero).",
     lien: ""
@@ -47,11 +50,12 @@ const projets = [
     titre: "Poste ALIBABA",
     titreEn: "ALIBABA Post", // titre en anglais
     categorie: "logiciel",
-    description: "Programme de gestion d'objets postaux (lettres et colis) avec calcul des frais et de l'assurance.",
-    descriptionEn: "Program to manage postal items (letters and parcels) with shipping and insurance fees.",
+    description: "Programme C# de gestion d'un bureau de poste : lettres et colis avec calcul du prix.",
+    descriptionEn: "C# program to manage a post office: letters and parcels with price calculation.",
     technos: ["C#", ".NET", "POO"],
-    details: "Projet de programmation orientée objet : classe abstraite, héritage, polymorphisme et interface IAssurance.",
-    detailsEn: "Object-oriented programming project: abstract class, inheritance, polymorphism and the IAssurance interface.",
+    technosEn: ["C#", ".NET", "OOP"],
+    details: "Classe abstraite ObjetPostal, classes Colis et Lettre (sealed) et interface IAssurance. Prix selon le poids, le volume et le mode normal ou express. Code automatique et validation des données.",
+    detailsEn: "Abstract class ObjetPostal, classes Colis and Lettre (sealed) and the IAssurance interface. Price based on weight, volume and normal or express mode. Automatic code and data validation.",
     lien: ""
   },
   {
@@ -61,8 +65,21 @@ const projets = [
     description: "Modèle entité-association et modèle relationnel d'une agence de location de voitures.",
     descriptionEn: "Entity-relationship model and relational model of a car rental agency.",
     technos: ["Modèle E-A", "Modèle relationnel"],
+    technosEn: ["ER model", "Relational model"],
     details: "Projet d'équipe avec Julien Cacoulet : entités, attributs, clés primaires et étrangères, cardinalités et règles d'affaires.",
     detailsEn: "Team project with Julien Cacoulet: entities, attributes, primary and foreign keys, cardinalities and business rules.",
+    lien: ""
+  },
+  {
+    titre: "Magasin de téléphones",
+    titreEn: "Phone store", // titre en anglais
+    categorie: "base-de-donnees",
+    description: "Base de données SQL Server d'un magasin de téléphones.",
+    descriptionEn: "SQL Server database for a phone store.",
+    technos: ["SQL Server", "SQL"],
+    technosEn: ["SQL Server", "SQL"],
+    details: "Base de 5 tables (Clients, Telephones, Ventes, LignesVente, Paiements) avec clés étrangères, insertions et requêtes filtrées et triées.",
+    detailsEn: "Database of 5 tables (Clients, Telephones, Ventes, LignesVente, Paiements) with foreign keys, inserts and filtered and sorted queries.",
     lien: ""
   },
   {
@@ -72,6 +89,7 @@ const projets = [
     description: "Laboratoire d'assurance qualité : trouver avec le débogueur quels rectangles se touchent parmi dix.",
     descriptionEn: "Quality assurance lab: use the debugger to find which of ten rectangles touch each other.",
     technos: ["C#", "Visual Studio", "Débogueur"],
+    technosEn: ["C#", "Visual Studio", "Debugger"],
     details: "Points d'arrêt et inspection des variables, sans modifier le code qui fonctionne. Résultat : collision entre les rectangles C et H.",
     detailsEn: "Breakpoints and variable inspection, without changing the working code. Result: collision between rectangles C and H.",
     lien: ""
@@ -122,9 +140,12 @@ function creerCarte(projet, numero) {
   // Liste des technologies : une boucle for crée un <li> par techno
   const technos = document.createElement("ul");
   technos.classList.add("carte-projet__technos");
-  for (let i = 0; i < projet.technos.length; i++) {
+  // Ternaire : liste en français ou en anglais (les pastilles sont créées en JS,
+  // elles n'ont pas d'id : on les traduit ici, comme le titre et la description)
+  const listeTechnos = (langue === "fr") ? projet.technos : projet.technosEn;
+  for (let i = 0; i < listeTechnos.length; i++) {
     const techno = document.createElement("li");
-    techno.textContent = projet.technos[i];
+    techno.textContent = listeTechnos[i];
     technos.appendChild(techno);
   }
 

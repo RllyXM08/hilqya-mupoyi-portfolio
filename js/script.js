@@ -5,6 +5,12 @@
 // ==========================================================
 
 import { initialiserProjets } from "./projets.js";
+import { initialiserMenu } from "./menu.js";
+import { initialiserFormulaire } from "./formulaire.js";
 
 // Étape 3 : cartes des projets et filtre
 initialiserProjets();
+
+// Étape 4 : menu mobile et validation du formulaire
+initialiserMenu();
+initialiserFormulaire();

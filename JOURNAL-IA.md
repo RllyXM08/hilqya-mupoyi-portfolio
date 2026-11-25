@@ -102,3 +102,16 @@
   - J'ai fait des tests à la main avec Live Server puis sur le site en ligne : filtres (7/1/2/2/2), panneaux Détails, pastilles FR/EN, formulaire (champs vides, courriel invalide, envoi valide) en FR et en EN, menu mobile.
   - J'ai validé le site avec le validateur W3C sur le site en ligne le 25 novembre 2026 : HTML : 0 erreur et 0 avertissement, CSS : 0 erreur et 4 avertissements « background-color et border-color de la même couleur » (`.bouton--plein` et `.filtre--actif`, des boutons pleins voulus).
   - J'ai relu les diffs et donné mon OK avant chaque commit.
+
+### Entrée 11
+- Date : 25 novembre 2026
+- Outil : Claude Code
+- Besoin / prompt (résumé) : rendre mon CV visible et téléchargeable sur le portfolio (version française et version anglaise en PDF, boutons Voir et Télécharger qui suivent la langue du site) et retirer mes coordonnées privées de la version web (commit 6e9547f).
+- Ce que l'IA a proposé :
+  - Retrouver mes deux CV (FR et EN) dans mes Téléchargements et signaler qu'ils ne contenaient pas d'adresse civique, seulement « Gatineau (Québec) J9J 4K9 » : retirer le code postal et garder la ville.
+  - Signaler que mon téléphone personnel et les téléphones d'eQtech et d'Airtel resteraient publics, et me demander si je les gardais.
+  - Fabriquer les deux PDF de la version web à partir de copies de mes fichiers Word, en retirant ce que j'avais décidé, puis les exporter avec Word et vérifier que les numéros n'apparaissent plus et que chaque PDF fait une page.
+  - Dans `index.html`, deux boutons dans l'accueil, « Voir mon CV » (nouvel onglet) et « Télécharger mon CV » ; dans `langue.js`, leur texte dans `traductions` et un ternaire qui choisit le PDF français ou anglais ; dans `styles.css`, une règle `.actions` pour espacer les boutons.
+  - Mettre à jour le README, puis tester sur une copie servie en local (liens FR au départ, EN après un clic, FR après un deuxième clic, PDF en réponse 200, pas de défilement horizontal à 360 px).
+- Ce que j'ai gardé / modifié / rejeté : J'ai gardé les deux boutons « Voir mon CV » et « Télécharger mon CV » dans l'accueil, avec le CV français ou anglais selon la langue du site. Comme le dépôt est public, j'ai choisi de retirer de la version web le code postal, mon téléphone et ceux de mes anciens employeurs, remplacés par « Références disponibles sur demande ». Je garde mes CV complets pour les envoyer moi-même aux recruteurs. Je n'ai rien rejeté.
+- Mes vérifications : J'ai ouvert les deux PDF : chacun fait une page, et il n'y a plus de téléphone ni de code postal. Avec Live Server, en français, « Voir mon CV » ouvre le CV français dans un nouvel onglet et « Télécharger mon CV » télécharge le fichier FR. En anglais, les boutons sont traduits et mènent au CV anglais ; en revenant au français, ils redeviennent français. En petite largeur (360 px), les boutons s'empilent sans défilement horizontal, et la console n'a pas d'erreur. Après la mise en ligne, j'ai refait le test sur le site GitHub Pages.

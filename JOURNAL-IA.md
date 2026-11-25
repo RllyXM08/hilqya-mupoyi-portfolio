@@ -18,3 +18,9 @@
 - Outil : Claude Code (Sonnet 5.5)
 - Besoin / prompt (résumé) : Étape 2A : ajustements HTML (polices, photo, compétences)
 - Mes vérifications : [À COMPLÉTER]
+
+### Entrée 3
+- Date : 25 novembre 2026
+- Outil : Claude Code (Sonnet 5.5)
+- Besoin / prompt (résumé) : Étape 2B : CSS de base (variables, header, accueil, photo, favicon)
+- Mes vérifications : [À COMPLÉTER]

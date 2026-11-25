@@ -1,0 +1,287 @@
+/* ==========================================================
+   styles.css : portfolio de Hilqya Kabemba Mupoyi
+   Méthode : mobile d'abord (styles de base = téléphone),
+   puis @media (min-width: 48rem) pour les écrans plus larges.
+   ========================================================== */
+
+/* ---------- 1. VARIABLES ----------
+   Les variables CSS gardent les couleurs et polices à un seul endroit :
+   si je change une valeur ici, tout le site change. */
+:root {
+  --fond: #0a0a0a;             /* fond de la page */
+  --surface: #141414;          /* fond des zones en relief (cartes, photo) */
+  --bordure: #2a2a2a;          /* couleur des traits et contours */
+  --texte: #e8ecef;            /* texte principal */
+  --texte-doux: #a5b0ba;       /* texte secondaire, moins contrasté */
+  --accent: #ffb020;           /* couleur d'accent (ambre) */
+  --texte-sur-accent: #1a1205; /* texte posé sur un fond ambre */
+  --rayon: 4px;                /* arrondi des coins */
+  --police-mono: "IBM Plex Mono", monospace; /* titres et éléments « terminal » */
+  --police-texte: "Inter", sans-serif;       /* texte courant */
+}
+
+/* ---------- 2. BASE ---------- */
+
+/* box-sizing: la largeur d'un élément inclut son padding et sa bordure.
+   Le défilement vers une ancre est animé (smooth). */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Tous les éléments héritent de ce mode de calcul */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background-color: var(--fond);
+  color: var(--texte);
+  font-family: var(--police-texte);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Les images ne dépassent jamais leur conteneur */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Liens : sans soulignement, ambre au survol ou au focus clavier */
+a {
+  color: var(--texte);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--accent);
+}
+
+/* Contour visible pour la navigation au clavier (tous les éléments) */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+h1, h2, h3 {
+  font-family: var(--police-mono);
+}
+
+/* ---------- 3. EN-TÊTE ---------- */
+
+/* Reste collé en haut de l'écran. Flex : logo à gauche, bouton à droite,
+   et la nav passe à la ligne (flex-wrap) quand elle est ouverte. */
+.entete {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--fond);
+  border-bottom: 1px solid var(--bordure);
+}
+
+.logo {
+  font-family: var(--police-mono);
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Bouton « Menu » (visible seulement sur mobile) */
+.bouton-menu {
+  min-height: 2.75rem; /* zone de clic confortable au doigt */
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--bordure);
+  border-radius: var(--rayon);
+  color: var(--texte);
+  font-family: var(--police-mono);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.bouton-menu:hover,
+.bouton-menu:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------- 4. NAVIGATION (mobile) ---------- */
+
+/* La nav prend toute la largeur, donc elle passe sous le logo */
+.entete nav {
+  flex-basis: 100%;
+}
+
+/* Menu caché par défaut sur mobile */
+#menu-principal {
+  display: none;
+  list-style: none;  /* pas de puces */
+  margin: 0;
+  padding: 0;
+}
+
+/* Le JS (étape 4) ajoutera .nav--ouverte : le menu s'affiche en colonne */
+.nav--ouverte #menu-principal {
+  display: flex;
+  flex-direction: column;
+}
+
+#menu-principal a {
+  display: block;
+  padding: 0.75rem 0;
+  font-family: var(--police-mono);
+  color: var(--texte-doux);
+}
+
+#menu-principal a:hover,
+#menu-principal a:focus-visible {
+  color: var(--accent);
+}
+
+/* ---------- 5. ACCUEIL ---------- */
+
+/* Mobile : texte et photo empilés (colonne) */
+#accueil {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+.accueil__salut {
+  margin: 0;
+  font-family: var(--police-mono);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+
+.accueil__nom {
+  margin: 0.25rem 0;
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+.accueil__titre {
+  margin: 0 0 1rem;
+  color: var(--texte-doux);
+}
+
+/* Boutons : base commune (liens d'accueil) */
+.bouton {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--rayon);
+  font-family: var(--police-mono);
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+/* Bouton plein : fond ambre */
+.bouton--plein {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: var(--texte-sur-accent);
+}
+
+.bouton--plein:hover,
+.bouton--plein:focus-visible {
+  background-color: transparent;
+  color: var(--accent);
+}
+
+/* Bouton contour : simple bordure */
+.bouton--contour {
+  border-color: var(--bordure);
+  color: var(--texte);
+}
+
+.bouton--contour:hover,
+.bouton--contour:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------- 6. PHOTO ---------- */
+
+/* isolation: isolate crée un contexte d'empilement : le cadre décalé
+   (z-index -1) reste derrière la photo sans passer derrière la page. */
+.photo-cadre {
+  position: relative;
+  isolation: isolate;
+  max-width: 18rem;
+}
+
+.photo-cadre img {
+  width: 100%;
+  aspect-ratio: 1;        /* image carrée */
+  object-fit: cover;      /* recadre sans déformer */
+  filter: grayscale(100%);
+  border-radius: var(--rayon);
+  background-color: var(--surface); /* visible tant que la photo manque */
+}
+
+/* Cadre ambre décalé derrière la photo */
+.photo-cadre::before {
+  content: "";
+  position: absolute;
+  inset: 0;               /* même taille que la photo */
+  border: 2px solid var(--accent);
+  border-radius: var(--rayon);
+  transform: translate(0.75rem, 0.75rem);
+  z-index: -1;
+}
+
+/* ---------- 7. ÉCRANS LARGES (48rem = 768 px et plus) ---------- */
+@media (min-width: 48rem) {
+  /* Plus de bouton Menu : le menu est toujours affiché, en ligne */
+  .bouton-menu {
+    display: none;
+  }
+
+  .entete nav {
+    flex-basis: auto;
+  }
+
+  #menu-principal {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  #menu-principal a {
+    padding: 0.5rem 0;
+  }
+
+  /* Accueil : texte à gauche, photo à droite */
+  #accueil {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+  }
+
+  .accueil__nom {
+    font-size: 3rem;
+  }
+}
+
+/* ---------- 8. MOUVEMENT RÉDUIT ----------
+   Si l'utilisateur demande moins d'animations dans son système,
+   on coupe les transitions et le défilement animé. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    transition: none !important;
+  }
+}

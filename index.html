@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css" />
   <script type="module" src="js/script.js"></script>
 </head>
@@ -37,8 +38,8 @@
         <p class="accueil__titre">Étudiant en programmation informatique</p>
         <p>Bienvenue sur mon portfolio. Vous y trouverez mon parcours, mes compétences et les projets que j'ai réalisés.</p>
         <p class="actions">
-          <a class="bouton" href="#projets">Voir mes projets</a>
-          <a class="bouton bouton-secondaire" href="#contact">Me contacter</a>
+          <a class="bouton bouton--plein" href="#projets">Voir mes projets</a>
+          <a class="bouton bouton--contour" href="#contact">Me contacter</a>
         </p>
       </div>
       <!-- Photo (le fichier sera ajouté dans assets/images/) -->
@@ -96,7 +97,7 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
         </p>
-        <button type="submit" class="bouton">Envoyer</button>
+        <button type="submit" class="bouton bouton--plein">Envoyer</button>
         <p id="message-formulaire" class="message-formulaire" role="status" aria-live="polite"></p>
       </form>
     </section>

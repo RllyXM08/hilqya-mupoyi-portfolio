@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Carré noir -->
+  <rect width="64" height="64" fill="#0a0a0a"/>
+  <!-- Symbole « > » ambre -->
+  <path d="M22 18 L42 32 L22 46" fill="none" stroke="#ffb020" stroke-width="7" stroke-linecap="square"/>
+</svg>
